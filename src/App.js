@@ -1,45 +1,44 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios';
-import Gallery from './Gallery';
+import React, {useState} from 'react'
+import TodoList from './TodoList';
 
-const apiKey = "8951517e74c52dfa170811bdb1bcc704";
 const App = () => {
-  const [data,setData] = useState([]);
-  const [search,setSearch] = useState("");
-  useEffect(()=>{
-    },[])
-  const changeHandler = e =>{
-    setSearch(e.target.value);
-  }
-  const submitHandler = e =>{
+  const [task, setTask] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  const changeHandler = e => setTask(e.target.value);
+  const submitHandler = e => {
     e.preventDefault();
-    axios
-    .get(
-      `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1`
-    )
-    .then(response => {
-      setData(response.data.photos.photo)
-    })
-    .catch(error => {
-      console.log(
-        "Encountered an error with fetching and parsing data",
-        error
-      );
-  })
+    const newTodos = [...todos, task];
+    setTodos(newTodos);
+    setTask("");
+    console.log(task);
+  }
+  const deleteHandler = (indexValue) => {
+    const newTodos = todos.filter((todo, index) => index !==indexValue);
+    setTodos(newTodos);
   }
   return (
-    <div>
-      <center>
-        <h2>Gallery Snapshot</h2><br></br>
-        <form onSubmit={submitHandler}>
-          <input size="30" type="text" onChange={changeHandler} value={search}/><br /><br />
-          <input type="submit" name="Search" />
-        </form>
-        <br />
-        {data.length>=1?<Gallery data={data}/>:<h4>No Image Loaded</h4>}
-      </center>
-    </div>
+    <>
+     <center>
+       <div className="card">
+         <div className="card-body">
+          <h5 className="card-title">Todo Management Application</h5>
+          <form onSubmit={submitHandler}>
+            <input type="text" name="task" value={task}
+            onChange={changeHandler}
+            /> &nbsp; &nbsp;
+            <input type="submit" value="Add" name="Add" size="30"/>
+          </form> <br />
+          <TodoList todoList = {todos} deleteHandler= {deleteHandler} />
+         </div>
+       </div>
+     </center> 
+    </>
   )
 }
 export default App
+
+
+
+
 

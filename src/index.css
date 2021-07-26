@@ -11,7 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-img{
-  margin: 10px;
-  display: flex;
+
+input{
+  border-radius: 5px;
 }
+h5{
+  margin: 15px;
+}
+input[type="submit"]{
+  background-color: greenyellow;
+  padding: 0px 20px 0px 20px;
+
+}
+button{
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
