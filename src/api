@@ -1,0 +1,34 @@
+const apiKey = "636e1481b4f3c446d26b8eb6ebfe7127";
+
+
+Flickr API = https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${search}&per_page=24&format=json&nojsoncallback=1
+
+
+Image URL = https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}_m.jpg
+
+Key:
+8951517e74c52dfa170811bdb1bcc704
+
+Secret:
+782dad12fa4e99ab
+
+
+Key:
+7f1047e8a70cd04082cc0e15d4a6437f
+
+Secret:
+43061f7ad8519729
+
+
+
+
+
+
+
+
+
+
+
+
+
+
